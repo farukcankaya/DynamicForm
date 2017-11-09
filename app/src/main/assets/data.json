@@ -80,6 +80,27 @@
           "validation_message": "Last name is too short (minimum is 2 characters)"
         }
       ]
+    },
+    {
+      "field_type": "date",
+      "field_name": "birth_date",
+      "label": null,
+      "hint": "Birtdate",
+      "options": null,
+      "constraints": {
+        "limit": {
+          "min": "1990-12-31",
+          "max": "2017-10-31",
+          "limit_type": "date"
+        }
+      },
+      "validations": [
+        {
+          "validation_type": "presence",
+          "expression": null,
+          "validation_message": "Birtdate can't be blank"
+        }
+      ]
     }
   ],
   "submit": {

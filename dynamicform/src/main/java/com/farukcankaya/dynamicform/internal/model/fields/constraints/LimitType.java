@@ -10,5 +10,7 @@ public enum LimitType {
     @SerializedName("character")
     CHARACTER,
     @SerializedName("word")
-    WORD
+    WORD,
+    @SerializedName("date")
+    DATE
 }

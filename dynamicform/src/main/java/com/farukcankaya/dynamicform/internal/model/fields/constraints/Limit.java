@@ -8,31 +8,31 @@ import com.google.gson.annotations.SerializedName;
 
 public class Limit {
     @SerializedName("min")
-    Double min;
+    String min;
     @SerializedName("max")
-    Double max;
+    String max;
     @SerializedName("limit_type")
     LimitType limitType;
 
-    public Limit(Double min, Double max, LimitType limitType) {
+    public Limit(String min, String max, LimitType limitType) {
         this.min = min;
         this.max = max;
         this.limitType = limitType;
     }
 
-    public Double getMin() {
+    public String getMin() {
         return min;
     }
 
-    public void setMin(Double min) {
+    public void setMin(String min) {
         this.min = min;
     }
 
-    public Double getMax() {
+    public String getMax() {
         return max;
     }
 
-    public void setMax(Double max) {
+    public void setMax(String max) {
         this.max = max;
     }
 

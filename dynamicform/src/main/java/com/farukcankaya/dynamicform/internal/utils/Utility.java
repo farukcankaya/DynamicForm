@@ -2,7 +2,6 @@ package com.farukcankaya.dynamicform.internal.utils;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Switch;
 
 import com.farukcankaya.dynamicform.internal.model.fields.Field;
 import com.farukcankaya.dynamicform.internal.model.fields.constraints.InputType;
@@ -13,6 +12,10 @@ import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,6 +27,7 @@ import java.util.regex.Pattern;
 public class Utility {
     private static final String TAG = "Utility";
     private static Gson gson;
+    private static final String DATE_FORMAT = "yyyy-MM-dd";
 
     public static Gson getGson() {
         if (gson != null) {
@@ -111,5 +115,21 @@ public class Utility {
 
         String s = stringBuffer.toString();
         return s.substring(0, 1).toUpperCase() + s.substring(1);
+    }
+
+    public static String fromDate(Date date) {
+        DateFormat formatter = new SimpleDateFormat(DATE_FORMAT);
+        return formatter.format(date);
+    }
+
+    public static Date toDate(String stringDate) {
+        if (stringDate != null) {
+            try {
+                return new SimpleDateFormat(DATE_FORMAT).parse(stringDate);
+            } catch (ParseException e) {
+                Log.e(TAG, e.getLocalizedMessage());
+            }
+        }
+        return null;
     }
 }

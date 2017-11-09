@@ -9,10 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.farukcankaya.dynamicform.R;
-import com.farukcankaya.dynamicform.internal.model.fields.Field;
 import com.farukcankaya.dynamicform.internal.model.fields.TextField;
 import com.farukcankaya.dynamicform.internal.model.fields.constraints.FieldConstraint;
-import com.farukcankaya.dynamicform.internal.model.fields.constraints.InputType;
 import com.farukcankaya.dynamicform.internal.model.fields.constraints.Limit;
 import com.farukcankaya.dynamicform.internal.utils.Utility;
 
@@ -58,7 +56,7 @@ public class TextFieldHolder extends BaseHolder implements TextWatcher {
             if (limit != null) {
                 if (limit.getMax() != null) {
                     InputFilter[] filters = new InputFilter[1];
-                    filters[0] = new InputFilter.LengthFilter(limit.getMax().intValue());
+                    filters[0] = new InputFilter.LengthFilter(Integer.parseInt(limit.getMax()));
                     fieldEditText.setFilters(filters);
                 }
             }
