@@ -1,0 +1,10 @@
+{
+  "identity_type": "tckn",
+  "data": {
+    "ssn": "48431355342",
+    "is_citizen": true,
+    "first_name ": "FARUK",
+    "last_name ": "CANKAYA",
+    "birth_date": "11/01/1993"
+  }
+}

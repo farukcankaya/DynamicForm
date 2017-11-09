@@ -1,0 +1,128 @@
+{
+  "identity_type": "tckn",
+  "identity_form": {
+    "fields": [
+      {
+        "field_type": "text",
+        "field_name": "ssn",
+        "label": null,
+        "hint": "TC Kimlik numarası",
+        "options": [],
+        "constraints": {
+          "limit": {
+            "min": "11",
+            "max": "11",
+            "limit_type": "character"
+          },
+          "input_type": "number"
+        },
+        "validations": [
+          {
+            "validation_type": "presence",
+            "expression": null,
+            "validation_message": "TC Kimlik numaranızı girmeniz gerekiyor"
+          }
+        ]
+      },
+      {
+        "field_type": "text",
+        "field_name": "first_name",
+        "label": null,
+        "hint": "Adınınız",
+        "options": [],
+        "constraints": {
+          "limit": {
+            "min": null,
+            "max": "255",
+            "limit_type": "character"
+          },
+          "input_type": "textCapCharacters"
+        },
+        "validations": [
+          {
+            "validation_type": "presence",
+            "expression": null,
+            "validation_message": "Adınızı girmeniz gerekiyor"
+          },
+          {
+            "validation_type": "min_limit",
+            "expression": "2",
+            "validation_message": "Adınız minimum 2 karakterden oluşmalı"
+          }
+        ]
+      },
+      {
+        "field_type": "text",
+        "field_name": "last_name",
+        "label": null,
+        "hint": "Soyadınız",
+        "options": [],
+        "constraints": {
+          "limit": {
+            "min": null,
+            "max": "255",
+            "limit_type": "character"
+          },
+          "input_type": "textCapCharacters"
+        },
+        "validations": [
+          {
+            "validation_type": "presence",
+            "expression": null,
+            "validation_message": "Soyadınızı girmeniz gerekiyor"
+          },
+          {
+            "validation_type": "min_limit",
+            "expression": "2",
+            "validation_message": "Soydınız minimum 2 karakterden oluşmalı"
+          }
+        ]
+      },
+      {
+        "field_type": "date",
+        "field_name": "birth_date",
+        "label": null,
+        "hint": "Doğum tarihiniz",
+        "options": [],
+        "constraints": {
+          "limit": {
+            "min": "12/31/1990",
+            "max": "12/31/2017",
+            "limit_type": "date"
+          },
+          "input_type": null
+        },
+        "validations": [
+          {
+            "validation_type": "presence",
+            "expression": null,
+            "validation_message": "Doğum tarihinizi girmeniz gerekiyor"
+          }
+        ]
+      },
+      {
+        "field_type": "radio",
+        "field_name": "is_citizen",
+        "label": "",
+        "hint": "",
+        "options": [
+          {
+            "label": "T.C. vatandaşıyım",
+            "value": "true",
+            "is_checked": true
+          },
+          {
+            "label": "T.C. vatandaşı değilim",
+            "value": "false",
+            "is_checked": false
+          }
+        ],
+        "constraints": null,
+        "validations": []
+      }
+    ],
+    "submit": {
+      "label": "Tamamla"
+    }
+  }
+}

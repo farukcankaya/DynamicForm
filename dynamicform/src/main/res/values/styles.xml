@@ -1,0 +1,9 @@
+<resources>
+
+    <style name="BaseDynamicFormStyle">
+        <item name="android:padding">12dp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="DynamicFormStyle" parent="BaseDynamicFormStyle" />
+</resources>

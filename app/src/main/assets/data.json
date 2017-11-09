@@ -1,0 +1,88 @@
+{
+  "fields": [
+    {
+      "field_type": "text",
+      "field_name": "ssn",
+      "label": null,
+      "hint": "SSN",
+      "options": null,
+      "constraints": {
+        "limit": {
+          "min": 11,
+          "max": 11,
+          "limit_type": "character"
+        },
+        "input_type": "number"
+      },
+      "validations": [
+        {
+          "validation_type": "presence",
+          "expression": null,
+          "validation_message": "SSN can't be blank"
+        },
+        {
+          "validation_type": "min_limit",
+          "expression": "11",
+          "validation_message": "SSN is too short (should be 11 characters)"
+        }
+      ]
+    },
+    {
+      "field_type": "text",
+      "field_name": "first_name",
+      "label": null,
+      "hint": "First name",
+      "options": [],
+      "constraints": {
+        "limit": {
+          "min": null,
+          "max": 255,
+          "limit_type": "character"
+        },
+        "input_type": "textCapCharacters"
+      },
+      "validations": [
+        {
+          "validation_type": "presence",
+          "expression": null,
+          "validation_message": "First name can't be blank"
+        },
+        {
+          "validation_type": "min_limit",
+          "expression": "2",
+          "validation_message": "First name is too short (minimum is 2 characters)"
+        }
+      ]
+    },
+    {
+      "field_type": "text",
+      "field_name": "last_name",
+      "label": null,
+      "hint": "Last name",
+      "options": [],
+      "constraints": {
+        "limit": {
+          "min": null,
+          "max": 255,
+          "limit_type": "character"
+        },
+        "input_type": "textCapCharacters"
+      },
+      "validations": [
+        {
+          "validation_type": "presence",
+          "expression": null,
+          "validation_message": "Last name can't be blank"
+        },
+        {
+          "validation_type": "min_limit",
+          "expression": 2,
+          "validation_message": "Last name is too short (minimum is 2 characters)"
+        }
+      ]
+    }
+  ],
+  "submit": {
+    "label": "Verify Identity"
+  }
+}
