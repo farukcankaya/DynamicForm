@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.farukcankaya.dynamicform.R;
 import com.farukcankaya.dynamicform.internal.model.fields.RadioField;
 import com.farukcankaya.dynamicform.internal.model.fields.options.FieldOption;
+import com.farukcankaya.dynamicform.internal.ui.view.DynamicFormRadioButton;
 import com.farukcankaya.dynamicform.internal.utils.Utility;
 
 import java.util.List;
@@ -44,7 +45,7 @@ public class RadioFieldHolder extends BaseHolder implements RadioGroup.OnChecked
             if (fieldOption.getId() == 0) {
                 fieldOption.setId(Utility.generateUniqueViewId());
             }
-            RadioButton radioButton = new RadioButton(itemView.getContext());
+            DynamicFormRadioButton radioButton = new DynamicFormRadioButton(itemView.getContext());
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             radioButton.setId(fieldOption.getId());
             radioButton.setLayoutParams(params);

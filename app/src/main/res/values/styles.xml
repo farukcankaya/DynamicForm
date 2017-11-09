@@ -6,13 +6,18 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorPrimary</item>
-
+        <item name="dynamicFormRadioButtonStyle">@style/RadioButtonStyle</item>
     </style>
 
     <style name="DynamicFormStyle" parent="BaseDynamicFormStyle">
         <item name="android:layout_marginBottom">0dp</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="RadioButtonStyle" parent="@style/BaseDynamicFormRadioButtonStyle">
+        <item name="buttonTint">#f00</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
 </resources>

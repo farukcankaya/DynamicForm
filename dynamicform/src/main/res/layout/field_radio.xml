@@ -13,6 +13,7 @@
     <RadioGroup
         android:id="@+id/field"
         style="@style/DynamicFormStyle"
+        android:theme="@style/DynamicFormStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>
