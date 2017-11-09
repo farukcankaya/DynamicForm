@@ -10,7 +10,7 @@
     </style>
 
     <style name="DynamicFormStyle" parent="BaseDynamicFormStyle">
-        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>

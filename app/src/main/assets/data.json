@@ -101,6 +101,26 @@
           "validation_message": "Birtdate can't be blank"
         }
       ]
+    },
+    {
+      "field_type": "radio",
+      "field_name": "is_citizen",
+      "label": null,
+      "hint": null,
+      "options": [
+        {
+          "label": "I am Turkish citizen",
+          "value": "true",
+          "is_checked": true
+        },
+        {
+          "label": "I am not Turkish citizen",
+          "value": "false",
+          "is_checked": false
+        }
+      ],
+      "constraints": null,
+      "validations": []
     }
   ],
   "submit": {

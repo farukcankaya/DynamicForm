@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class FieldOption {
+    int id;
     @SerializedName("label")
     String label;
     @SerializedName("value")
@@ -18,6 +19,14 @@ public class FieldOption {
         this.label = label;
         this.value = value;
         this.isChecked = isChecked;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getLabel() {

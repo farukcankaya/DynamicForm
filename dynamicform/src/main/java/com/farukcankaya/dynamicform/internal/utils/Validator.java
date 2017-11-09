@@ -2,7 +2,6 @@ package com.farukcankaya.dynamicform.internal.utils;
 
 import android.text.TextUtils;
 
-import com.farukcankaya.dynamicform.internal.model.fields.constraints.Limit;
 import com.farukcankaya.dynamicform.internal.model.fields.validations.EqualLimitValidation;
 import com.farukcankaya.dynamicform.internal.model.fields.validations.LimitType;
 import com.farukcankaya.dynamicform.internal.model.fields.validations.LimitValidation;
@@ -20,7 +19,8 @@ import java.util.List;
  */
 
 public class Validator {
-    public static List<String> validate(List<Validation> validations, String value) {
+    public static List<String> validate(List<Validation> validations, Object object) {
+        String value = object == null ? "" : object.toString();
         List<String> errors = new ArrayList<>(validations.size());
 
         for (Validation validation : validations) {

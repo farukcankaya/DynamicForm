@@ -85,7 +85,7 @@ public class DynamicForm {
         List<String> errors = new ArrayList<>(fields.size());
 
         for (Field field : fields) {
-            errors.addAll(Validator.validate(field.getValidations(), field.getValue().toString()));
+            errors.addAll(Validator.validate(field.getValidations(), field.getValue()));
         }
 
         return errors;

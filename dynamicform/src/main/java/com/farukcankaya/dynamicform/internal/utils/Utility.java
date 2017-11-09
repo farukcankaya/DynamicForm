@@ -1,7 +1,9 @@
 package com.farukcankaya.dynamicform.internal.utils;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.Log;
+import android.view.View;
 
 import com.farukcankaya.dynamicform.internal.model.fields.Field;
 import com.farukcankaya.dynamicform.internal.model.fields.constraints.InputType;
@@ -17,6 +19,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -131,5 +134,33 @@ public class Utility {
             }
         }
         return null;
+    }
+
+    public static int generateUniqueViewId() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            return generateViewId();
+        } else {
+            return View.generateViewId();
+        }
+    }
+
+    private static final AtomicInteger sNextGeneratedId = new AtomicInteger(1);
+
+    /**
+     * Generate a value suitable for use in {@link android.view.View#setId(int)}.
+     * This value will not collide with ID values generated at build time by aapt for R.id.
+     *
+     * @return a generated ID value
+     */
+    private static int generateViewId() {
+        for (; ; ) {
+            final int result = sNextGeneratedId.get();
+            // aapt-generated IDs have the high byte nonzero; clamp to the range under that.
+            int newValue = result + 1;
+            if (newValue > 0x00FFFFFF) newValue = 1; // Roll over to 1, not 0.
+            if (sNextGeneratedId.compareAndSet(result, newValue)) {
+                return result;
+            }
+        }
     }
 }
