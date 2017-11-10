@@ -23,7 +23,7 @@ import java.util.Locale;
  */
 
 public class DateFieldHolder extends BaseHolder implements View.OnTouchListener,
-        DatePickerDialog.OnDateSetListener, DatePickerDialog.OnCancelListener, DatePickerDialog.OnDismissListener {
+        DatePickerDialog.OnDateSetListener, DatePickerDialog.OnCancelListener, DatePickerDialog.OnDismissListener, View.OnFocusChangeListener {
     private TextView labelTextView;
     private EditText fieldEditText;
     private DatePickerDialog dialog;
@@ -34,6 +34,7 @@ public class DateFieldHolder extends BaseHolder implements View.OnTouchListener,
         labelTextView = (TextView) itemView.findViewById(R.id.label);
         fieldEditText = (EditText) itemView.findViewById(R.id.field);
         fieldEditText.setOnTouchListener(this);
+        fieldEditText.setOnFocusChangeListener(this);
     }
 
     @Override
@@ -75,8 +76,7 @@ public class DateFieldHolder extends BaseHolder implements View.OnTouchListener,
         dialog.dismiss();
     }
 
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
+    private void showPicker() {
         if (isShown == false) {
             isShown = true;
             Calendar c = Calendar.getInstance(Locale.getDefault());
@@ -113,6 +113,11 @@ public class DateFieldHolder extends BaseHolder implements View.OnTouchListener,
 
             dialog.show();
         }
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        showPicker();
         return true;
     }
 
@@ -124,5 +129,13 @@ public class DateFieldHolder extends BaseHolder implements View.OnTouchListener,
     @Override
     public void onDismiss(DialogInterface dialog) {
         isShown = false;
+    }
+
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+        if (hasFocus) {
+            showPicker();
+            fieldEditText.clearFocus();
+        }
     }
 }
