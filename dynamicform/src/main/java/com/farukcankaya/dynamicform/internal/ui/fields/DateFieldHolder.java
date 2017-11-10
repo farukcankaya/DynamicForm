@@ -1,6 +1,7 @@
 package com.farukcankaya.dynamicform.internal.ui.fields;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,7 +22,8 @@ import java.util.Locale;
  * Created by farukcankaya on 09/11/2017.
  */
 
-public class DateFieldHolder extends BaseHolder implements View.OnTouchListener, DatePickerDialog.OnDateSetListener {
+public class DateFieldHolder extends BaseHolder implements View.OnTouchListener,
+        DatePickerDialog.OnDateSetListener, DatePickerDialog.OnCancelListener, DatePickerDialog.OnDismissListener {
     private TextView labelTextView;
     private EditText fieldEditText;
     private DatePickerDialog dialog;
@@ -92,6 +94,8 @@ public class DateFieldHolder extends BaseHolder implements View.OnTouchListener,
             }
 
             dialog = new DatePickerDialog(itemView.getContext(), this, year, month, day);
+            dialog.setOnCancelListener(this);
+            dialog.setOnDismissListener(this);
 
             FieldConstraint fieldConstraint = getField().getConstraint();
             if (fieldConstraint != null) {
@@ -110,5 +114,15 @@ public class DateFieldHolder extends BaseHolder implements View.OnTouchListener,
             dialog.show();
         }
         return true;
+    }
+
+    @Override
+    public void onCancel(DialogInterface dialog) {
+        isShown = false;
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        isShown = false;
     }
 }
