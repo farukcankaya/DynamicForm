@@ -8,4 +8,6 @@
     <style name="DynamicFormStyle" parent="BaseDynamicFormStyle" />
 
     <style name="BaseDynamicFormRadioButtonStyle" parent="@android:style/Widget.CompoundButton.RadioButton" />
+
+    <style name="BaseDynamicFormEditTextStyle" parent="Widget.AppCompat.EditText" />
 </resources>

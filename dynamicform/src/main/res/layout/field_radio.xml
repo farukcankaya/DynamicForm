@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
+    <com.farukcankaya.dynamicform.internal.ui.view.DynamicFormTextView
         android:id="@+id/label"
         style="@style/DynamicFormStyle"
         android:layout_width="match_parent"

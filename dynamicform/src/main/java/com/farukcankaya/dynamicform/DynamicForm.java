@@ -22,6 +22,7 @@ public class DynamicForm {
 
     private DynamicFormConfiguration dynamicFormConfiguration;
     private FormTemplate formTemplate;
+    public static String FONT;
 
     public DynamicForm(DynamicFormConfiguration dynamicFormConfiguration) {
         this.dynamicFormConfiguration = dynamicFormConfiguration;
@@ -29,6 +30,7 @@ public class DynamicForm {
             formTemplate = Utility.getGson().fromJson(dynamicFormConfiguration.getForm(), FormTemplate.class);
             Utility.setDefaultValues(formTemplate.getFields());
         }
+        FONT = dynamicFormConfiguration.getFont();
     }
 
     public void previewDynamicForm() {

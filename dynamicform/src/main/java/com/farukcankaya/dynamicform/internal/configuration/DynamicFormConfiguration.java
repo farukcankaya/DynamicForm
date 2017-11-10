@@ -12,12 +12,14 @@ public class DynamicFormConfiguration {
     public interface Arguments {
         String REQUEST_CODE = "com.farukcankaya.dynamicform.configuration.request_code";
         String FORM = "com.farukcankaya.dynamicform.configuration.form";
+        String FONT = "com.farukcankaya.dynamicform.configuration.font";
     }
 
     private Activity activity;
     private Fragment fragment;
     private int requestCode;
     private String form;
+    private String font;
 
     private DynamicFormConfiguration(Activity activity) {
         this.activity = activity;
@@ -47,6 +49,10 @@ public class DynamicFormConfiguration {
             dynamicFormConfiguration.form = form;
             return this;
         }
+        public Builder setFont(String font) {
+            dynamicFormConfiguration.font = font;
+            return this;
+        }
 
         public DynamicFormConfiguration build() {
             return dynamicFormConfiguration;
@@ -67,5 +73,9 @@ public class DynamicFormConfiguration {
 
     public String getForm() {
         return form;
+    }
+
+    public String getFont() {
+        return font;
     }
 }

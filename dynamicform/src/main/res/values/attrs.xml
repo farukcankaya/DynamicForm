@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="dynamicFormTextViewStyle" format="reference" />
+    <attr name="dynamicFormEditTextStyle" format="reference" />
     <attr name="dynamicFormRadioButtonStyle" format="reference" />
+    <declare-styleable name="BountyView">
+        <attr name="font" format="string" />
+    </declare-styleable>
 </resources>

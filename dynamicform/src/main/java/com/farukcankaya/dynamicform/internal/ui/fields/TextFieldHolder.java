@@ -12,6 +12,7 @@ import com.farukcankaya.dynamicform.R;
 import com.farukcankaya.dynamicform.internal.model.fields.TextField;
 import com.farukcankaya.dynamicform.internal.model.fields.constraints.FieldConstraint;
 import com.farukcankaya.dynamicform.internal.model.fields.constraints.Limit;
+import com.farukcankaya.dynamicform.internal.ui.view.DynamicFormEditText;
 import com.farukcankaya.dynamicform.internal.utils.Utility;
 
 /**
@@ -20,12 +21,12 @@ import com.farukcankaya.dynamicform.internal.utils.Utility;
 
 public class TextFieldHolder extends BaseHolder implements TextWatcher {
     private TextView labelTextView;
-    private EditText fieldEditText;
+    private DynamicFormEditText fieldEditText;
 
     public TextFieldHolder(View itemView) {
         super(itemView);
         labelTextView = (TextView) itemView.findViewById(R.id.label);
-        fieldEditText = (EditText) itemView.findViewById(R.id.field);
+        fieldEditText = (DynamicFormEditText) itemView.findViewById(R.id.field);
         fieldEditText.addTextChangedListener(this);
     }
 

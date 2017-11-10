@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         DynamicFormConfiguration configuration = new DynamicFormConfiguration.Builder(this)
                 .setRequestCode(22)
                 .setForm(Utility.loadJSONFromAsset(this, "data.json"))
+                .setFont("Roboto-Bold.ttf")
                 .build();
         dynamicForm = new DynamicForm(configuration);
         dynamicForm.previewDynamicForm(CustomDynamicFormActivity.class);

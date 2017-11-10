@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
-    <EditText
+    <com.farukcankaya.dynamicform.internal.ui.view.DynamicFormEditText
         android:id="@+id/field"
         style="@style/DynamicFormStyle"
         android:layout_width="0dp"
