@@ -1,14 +1,53 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+    }
+}
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'DynamicForm'
+
+    publishedGroupId = 'com.farukcankaya'
+    libraryName = 'dynamicform'
+    artifact = 'dynamicform'
+
+    libraryDescription = 'Easy to create dummy form to get inputs from user with varying input types such as EditText, Radio, Date...'
+
+    siteUrl = 'https://github.com/farukcankaya/DynamicForm'
+    gitUrl = 'https://github.com/farukcankaya/DynamicForm.git'
+
+    libraryVersion = "${versionName}"
+
+    developerId = 'farukcankaya'
+    developerName = 'Faruk Cankaya'
+    developerEmail = 'farukcankayaaa@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+version = "${versionName}"
+group = "${publishedGroupId}"
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    compileSdkVersion versionSdk
+    buildToolsVersion "${versionBuildTools}"
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion versionMinSdk
+        targetSdkVersion versionTargetSdk
+        versionCode versionBuild
+        versionName "${versionName}"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -19,18 +58,103 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
+
+task generateJavadocs(type: Javadoc) {
+    failOnError false
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath()
+            .join(File.pathSeparator))
+}
+
+task generateJavadocsJar(type: Jar) {
+    from generateJavadocs.destinationDir
+    classifier 'javadoc'
+}
+
+generateJavadocsJar.dependsOn generateJavadocs
+
+artifacts {
+    archives generateSourcesJar
+    archives generateJavadocsJar
+}
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            name "${publishedGroupId}"
+            description "${libraryDescription}"
+            url "${siteUrl}"
+            inceptionYear '2017'
+
+            packaging 'aar'
+            version "${versionName}"
+
+            scm {
+                connection "${gitUrl}"
+                url "${siteUrl}"
+
+            }
+            developers {
+                developer {
+                    name "${developerId}"
+                }
+            }
+        }
+    }
+}
+
+bintray {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    user = properties.getProperty('bintray.user')
+    key = properties.getProperty('bintray.apikey')
+    configurations = ['archives']
+    pkg {
+        repo = bintrayRepo
+        name = bintrayName
+        userOrg = developerId
+        desc = libraryDescription
+        publish = true
+        publicDownloadNumbers = true
+        licenses = ['MIT']
+        labels = ['android', 'dynamic', 'form', 'json', 'input']
+        websiteUrl = siteUrl
+        issueTrackerUrl = "${siteUrl}/issues"
+        vcsUrl = gitUrl
+        version {
+            name = versionName
+            vcsTag = versionName
+            desc = 'Initial, lets party'
+            released = new Date()
+
+        }
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestCompile("com.android.support.test.espresso:espresso-core:${espresso}", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile "com.android.support:appcompat-v7:${supportVersion}"
+    compile "com.android.support:recyclerview-v7:${supportVersion}"
     // gson
-    compile 'com.google.code.gson:gson:2.8.0'
-    compile group: 'com.google.guava', name: 'guava', version: '18.0'
+    compile "com.google.code.gson:gson:${gson}"
+    compile group: 'com.google.guava', name: 'guava', version: "${guava}"
 
     testCompile 'junit:junit:4.12'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
 }
