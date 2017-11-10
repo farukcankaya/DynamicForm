@@ -14,8 +14,8 @@ buildscript {
     }
 
     ext {
-        versionBuild = 2
-        versionName = "0.0.2"
+        versionBuild = 3
+        versionName = "0.0.3"
 
         versionSdk = 25
         versionBuildTools = "25.0.1"

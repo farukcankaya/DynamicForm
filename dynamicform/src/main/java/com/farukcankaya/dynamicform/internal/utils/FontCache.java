@@ -16,7 +16,7 @@ public class FontCache {
     public static Typeface get(Context context, String font) {
         Typeface typeface = fontCache.get(font);
         if (typeface == null) {
-            String fontDirectory = "font";
+            String fontDirectory = "fonts";
             String localeFontDirectory = fontDirectory.concat("-").concat(Locale.getDefault().getLanguage()).concat("/");
             try {
                 typeface = Typeface.createFromAsset(context.getAssets(), localeFontDirectory.concat(font));
