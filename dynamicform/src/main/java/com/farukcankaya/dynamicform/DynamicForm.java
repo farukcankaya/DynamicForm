@@ -34,10 +34,10 @@ public class DynamicForm {
     }
 
     public void previewDynamicForm() {
-        previewDynamicForm(DynamicFormActivity.class);
+        previewDynamicForm(DynamicFormActivity.class, null);
     }
 
-    public void previewDynamicForm(Class<?> dynamicFormClass) {
+    public void previewDynamicForm(Class<?> dynamicFormClass, Intent extraIntent) {
         if (dynamicFormConfiguration == null || (dynamicFormConfiguration.getActivity() == null && dynamicFormConfiguration.getFragment() == null)) {
             return;
         }
@@ -47,6 +47,9 @@ public class DynamicForm {
         Intent intent = new Intent(activity, dynamicFormClass);
         intent.putExtra(DynamicFormConfiguration.Arguments.REQUEST_CODE, dynamicFormConfiguration.getRequestCode());
         intent.putExtra(DynamicFormConfiguration.Arguments.FORM, dynamicFormConfiguration.getForm());
+        if (extraIntent != null) {
+            intent.putExtras(extraIntent);
+        }
 
         if (dynamicFormConfiguration.getFragment() != null) {
             dynamicFormConfiguration.getFragment().startActivityForResult(intent, dynamicFormConfiguration.getRequestCode());

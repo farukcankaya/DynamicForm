@@ -21,6 +21,6 @@ public class MainActivity extends AppCompatActivity {
                 .setFont("Roboto-Bold.ttf")
                 .build();
         dynamicForm = new DynamicForm(configuration);
-        dynamicForm.previewDynamicForm(CustomDynamicFormActivity.class);
+        dynamicForm.previewDynamicForm(CustomDynamicFormActivity.class, null);
     }
 }
